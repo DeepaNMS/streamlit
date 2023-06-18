@@ -10,6 +10,19 @@ st.set_page_config(
     page_title="France Road Accident Data Analysis - Modelling",
     layout='wide'
 )
+# To set the background image of the page
+st.markdown(
+         f"""
+         <style>
+         .stApp {{
+             background-image: url("https://img.freepik.com/free-photo/abstract-luxury-gradient-blue-background-smooth-dark-blue-with-black-vignette-studio-banner_1258-63452.jpg?size=626&ext=jpg");
+             background-attachment: fixed;
+             background-size: cover
+         }}
+         </style>
+         """,
+         unsafe_allow_html=True
+     )
 
 st.markdown(f'<b><h0 style="color:#00008B;font-size:35px;">{"Data Modelling:"}</h0><br><br>', unsafe_allow_html=True)
 
@@ -63,19 +76,6 @@ elif option == 'F1 Score':
     st.table(df_F1Score)
 
     
-# To set the background image of the page
-st.markdown(
-         f"""
-         <style>
-         .stApp {{
-             background-image: url("https://img.freepik.com/free-photo/abstract-luxury-gradient-blue-background-smooth-dark-blue-with-black-vignette-studio-banner_1258-63452.jpg?size=626&ext=jpg");
-             background-attachment: fixed;
-             background-size: cover
-         }}
-         </style>
-         """,
-         unsafe_allow_html=True
-     )
 # List down all features used for modelling
 st.markdown(f'<p align="justify" font-family: "Times New Roman" style="color:#000000;"><br><b>{"Accident features used in data modelling:"}</p><br>', unsafe_allow_html=True)
 st.markdown(f'<p align="justify" font-family: "Times New Roman" style="color:#000000;">{"1. Area Zone"}</p>', unsafe_allow_html=True)
