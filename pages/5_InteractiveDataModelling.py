@@ -34,31 +34,38 @@ def splitDataset(df):
    
 
 
-st.markdown('# Machine learning models !')
+st.markdown('# Interactive Data Modelling !')
+# To set the background image of the page
+st.markdown(
+         f"""
+         <style>
+         .stApp {{
+             background-image: url("https://img.freepik.com/free-photo/abstract-luxury-gradient-blue-background-smooth-dark-blue-with-black-vignette-studio-banner_1258-63452.jpg?size=626&ext=jpg");
+             background-attachment: fixed;
+             background-size: cover
+         }}
+         </style>
+         """,
+         unsafe_allow_html=True
+     )
+
 st.write("""Generally speaking we can consider that accuracy scores:
                           - Over 90% - Very Good
                     - Between 70% and 90% - Good
                     - Between 60% and 70% - OK""")
 
-choices = ['XGBOOST','XGBOOST Improved','Gradient Boosting','Gradient Boosting Improved']
-#choices = ['Gradient Boosting']
-option = st.selectbox(
-         'Which model do you want to try ?',
-         choices)
-
-st.write('You selected :', option)
+choices = ['XGBOOST','XGBOOST Improved']
+option = st.selectbox('Which model do you want to try ?', choices)
 
 @st.cache_data
 def load_data(url):
     df = pd.read_csv(url)
     return df
 
-
-
-df = load_data('Datasets/X_test_sample.csv')
-
+df = load_data('Datasets/X_test.csv')
+df1 = load_data('Datasets/y_test.csv')
 if df is not None:
-    y_test =df['severity']
+    y_test =df1['severity']
     X_test = df.drop(['severity','Unnamed: 0'], axis = 1)
 
 if option=='Gradient Boosting':
