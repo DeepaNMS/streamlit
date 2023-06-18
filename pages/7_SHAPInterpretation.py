@@ -1,4 +1,6 @@
+
 import shap
+from shap import TreeExplainer
 import streamlit as st
 import streamlit.components.v1 as components
 import xgboost as xgb
@@ -68,5 +70,5 @@ st.markdown(f'<p align="justify" font-family: "Times New Roman" style="color:#00
 shap.initjs()
 shap.force_plot(explainer.expected_value, shap_values[0], features=X_test.iloc[0], feature_names=X_test.columns)
 #st_shap(shap.force_plot(explainer.expected_value, shap_values[0,:], X.iloc[0,:]))
-st.markdown(f'<p align="justify" font-family: "Times New Roman" style="color:#000000;"><br><b>{"Visualize the test set predictions"}</p>', unsafe_allow_html=True)
+#st.markdown(f'<p align="justify" font-family: "Times New Roman" style="color:#000000;"><br><b>{"Visualize the test set predictions"}</p>', unsafe_allow_html=True)
 #st_shap(shap.force_plot(explainer.expected_value, shap_values, X), 400)
