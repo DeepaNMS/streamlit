@@ -21,13 +21,14 @@ def results1(model):
     st.write('Accuracy score for test dataset =', res, '%')   
     st.markdown('## Confusion Matrix')
     ax= plt.subplot()
+    cm=st.dataframe(confusion_matrix(y_test, y_pred))
+    
     sns.heatmap(cm, annot=True, fmt='g', ax=ax);  #annot=True to annotate cells, ftm='g' to disable scientific notation
     # labels, title and ticks
     ax.set_xlabel('Predicted labels');ax.set_ylabel('True labels'); 
     ax.set_title('Confusion Matrix'); 
     ax.xaxis.set_ticklabels(['Class 0', 'Class 1']); ax.yaxis.set_ticklabels(['Class 0', 'Class 1']);
 
-    #st.dataframe(confusion_matrix(y_test, y_pred))
     st.markdown('## Classification Report')
     st.text(classification_report(y_test, y_pred))
 
