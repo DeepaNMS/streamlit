@@ -61,7 +61,7 @@ if df is not None:
 if option=='XGBOOST':
    st.write('XGBOOST accuracy score for training dataset = 71.998%')
    xgb = xgb.XGBClassifier()
-   xgb.load_model('Models/xgb_model.json')
+   model=xgb.load_model('Models/xgb_model.json')
    y_pred = model.predict(X_test)
    tstScore = accuracy_score(y_test,y_pred) * 100
    st.write('XGBOOST accuracy score for test dataset =',tstScore,'%')
