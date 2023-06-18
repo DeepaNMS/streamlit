@@ -39,10 +39,10 @@ st.markdown(
          unsafe_allow_html=True
      )
 
-st.markdown(f'<p align="justify" font-family: "Times New Roman" style="color:#000000;"><br>{"Generally speaking we can consider that accuracy scores:"}</p><br>', unsafe_allow_html=True)
-st.markdown(f'<p align="justify" font-family: "Times New Roman" style="color:#000000;"><br>{"Over 90% - Very good"}</p><br>', unsafe_allow_html=True)
-st.markdown(f'<p align="justify" font-family: "Times New Roman" style="color:#000000;"><br>{"Between 70% and 90% - Good"}</p><br>', unsafe_allow_html=True)
-st.markdown(f'<p align="justify" font-family: "Times New Roman" style="color:#000000;"><br>{"Between 60% and 70% - OK"}</p><br>', unsafe_allow_html=True)
+st.markdown(f'<p align="justify" font-family: "Times New Roman" style="color:#000000;">{"Generally speaking we can consider that accuracy scores:"}</p>', unsafe_allow_html=True)
+st.markdown(f'<p align="justify" font-family: "Times New Roman" style="color:#000000;">{"Over 90% - Very good"}</p>', unsafe_allow_html=True)
+st.markdown(f'<p align="justify" font-family: "Times New Roman" style="color:#000000;">{"Between 70% and 90% - Good"}</p>', unsafe_allow_html=True)
+st.markdown(f'<p align="justify" font-family: "Times New Roman" style="color:#000000;">{"Between 60% and 70% - OK"}</p><br>', unsafe_allow_html=True)
 
 choices = ['XGBOOST','XGBOOST Improved']
 option = st.selectbox('Which model do you want to try ?', choices)
