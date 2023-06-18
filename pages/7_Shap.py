@@ -7,9 +7,16 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 
     
-#uploaded_file = st.file_uploader("Choose a file")
-#if uploaded_file is not None:
-#  df = pd.read_csv(uploaded_file)
+# Set page title
+st.set_page_config(
+    page_title="France Road Accident Data Analysis - SHAP ",
+    layout='wide'
+)
+
+st.markdown(f'<b><h0 style="color:#00008B;font-size:35px;">{"Model interpretation with SHAP:"}</h0><br>', unsafe_allow_html=True)
+
+# To insert textual content 
+st.markdown(f'<p align="justify" font-family: "Times New Roman" style="color:#000000;"><br>{"Since the dataset is huge, the profiling has been done on the Test dataset."}</p><br>', unsafe_allow_html=True)
 
 @st.cache_data
 def load_data(url):
