@@ -40,23 +40,6 @@ df = load_data('Datasets/X_test_sample.csv')
 df = df.sample(n=1000)
 
 
-
-
-"""
-def st_shap(plot, height=None):
-    shap_html = f"<head>{shap.getjs()}</head><body>{plot.html()}</body>"
-    components.html(shap_html, height=height)
-
-             
-y_test =df['AccidentSeverity']
-X_test = df.drop(['AccidentSeverity'], axis = 1)
-
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.25)
-model = xgb.train({"learning_rate": 0.01}, xgboost.DMatrix(X, label=y), 100)
-    
-explainer = shap.TreeExplainer(model)
-shap_values = explainer.shap_values(X)
-"""
 y_test =df['AccidentSeverity']
 X_test = df.drop(['AccidentSeverity'], axis = 1)
 xgb_imp = xgb.XGBClassifier()
