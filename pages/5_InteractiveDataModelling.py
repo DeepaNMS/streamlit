@@ -63,7 +63,8 @@ if option=='XGBOOST':
    results1(xgb)
     
 elif option=='XGBOOST Improved':
-   st.write('XGBOOST score train 72.052')
+   st.markdown('## Accuracy')
+   st.write('Accuracy score for training dataset = 72.052%')
    xgb_imp = xgb.XGBClassifier()
    xgb_imp.load_model('Models/xgb_model_improved.json')
    results1(xgb_imp) 
