@@ -34,7 +34,7 @@ def splitDataset(df):
    
 
 
-st.markdown('# Interactive Data Modelling !')
+st.markdown('# Interactive Data Modelling:')
 # To set the background image of the page
 st.markdown(
          f"""
