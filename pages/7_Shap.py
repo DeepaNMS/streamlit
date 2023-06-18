@@ -46,14 +46,13 @@ X = df.drop(['AccidentSeverity'], axis = 1)
 
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.25)
 
-st.markdown(f'<p align="justify" font-family: "Times New Roman" style="color:#000000;"><br>{"XGBoost Model"}</p><br>', unsafe_allow_html=True)
+st.markdown(f'<p align="justify" font-family: "Times New Roman" style="color:#000000;"><br>{"XGBoost Model: Explain the model predictions using SHAP"}</p>', unsafe_allow_html=True)
 model = xgboost.train({"learning_rate": 0.01}, xgboost.DMatrix(X, label=y), 100)
-st.markdown(f'<p align="justify" font-family: "Times New Roman" style="color:#000000;"><br>{"Explain the model predictions using SHAP"}</p><br>', unsafe_allow_html=True)
     
 explainer = shap.TreeExplainer(model)
 shap_values = explainer.shap_values(X)
 
-st.markdown(f'<p align="justify" font-family: "Times New Roman" style="color:#000000;"><br>{"Visualize the first prediction explanation"}</p><br>', unsafe_allow_html=True)
+st.markdown(f'<p align="justify" font-family: "Times New Roman" style="color:#000000;"><br>{"Visualize the first prediction explanation"}</p>', unsafe_allow_html=True)
 st_shap(shap.force_plot(explainer.expected_value, shap_values[0,:], X.iloc[0,:]))
-st.markdown(f'<p align="justify" font-family: "Times New Roman" style="color:#000000;"><br>{"Visualize the training set predictions"}</p><br>', unsafe_allow_html=True)
+st.markdown(f'<p align="justify" font-family: "Times New Roman" style="color:#000000;"><br>{"Visualize the test set predictions"}</p>', unsafe_allow_html=True)
 st_shap(shap.force_plot(explainer.expected_value, shap_values, X), 400)
