@@ -39,7 +39,7 @@ X = df.drop(['AccidentSeverity'], axis = 1)
 
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.25)
 
-st.write('XGBoost model')
+
 model = xgboost.train({"learning_rate": 0.01}, xgboost.DMatrix(X, label=y), 100)
 
 st.markdown(f'<p align="justify" font-family: "Times New Roman" style="color:#000000;"><b>{"Explain the model predictions using SHAP:"}</b></p>', unsafe_allow_html=True)
