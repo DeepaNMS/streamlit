@@ -62,7 +62,7 @@ def load_data(url):
     df = pd.read_csv(url)
     return df
 
-df = load_data('Datasets/X_test.csv')
+df = load_data('Datasets/X_test1.csv')
 df1 = load_data('Datasets/y_test.csv')
 if df is not None:
     y_test =df1['AccidentSeverity']
