@@ -1,3 +1,4 @@
+### This page deals with the interactive accident data analysis 
 import streamlit as st
 import pandas as pd
 import numpy as np
@@ -5,15 +6,9 @@ import pydeck as pdk
 import plotly.express as px
 import datetime as dt
 
-st.header('Data Visualization')
+st.header('Interactive Accident Data Analysis:')
 
 st.image("https://www.simplilearn.com/ice9/free_resources_article_thumb/Data_Visualization_Tools.jpg", width=900)
-#@st.cache_data
-
-#uploaded_file = st.file_uploader("Choose a file")
-#if uploaded_file is not None:
-#    df = pd.read_csv(uploaded_file).sample(n=100000)
-
             
 @st.cache_data
 def load_data(url):
@@ -21,11 +16,8 @@ def load_data(url):
     return df
 
   
-df = load_data('Datasets/Dataviz_12_06_2023.csv')
-    
+df = load_data('Datasets/Dataviz_12_06_2023.csv')   
 df.dropna(subset=['LATITUDE', 'LONGITUDE','CRASH_DATE','CRASH_TIME'], inplace=True)
-
-
 df['date/time'] = pd.to_datetime(df['CRASH_DATE'] + ' ' + df['CRASH_TIME'])
 data = df
 
@@ -100,4 +92,18 @@ else:
 if st.checkbox("Show Raw Data", False):
    st.subheader('Raw Data')
    st.write(data)
+
+# To set the background image of the page
+st.markdown(
+         f"""
+         <style>
+         .stApp {{
+             background-image: url("https://img.freepik.com/free-photo/abstract-luxury-gradient-blue-background-smooth-dark-blue-with-black-vignette-studio-banner_1258-63452.jpg?size=626&ext=jpg");
+             background-attachment: fixed;
+             background-size: cover
+         }}
+         </style>
+         """,
+         unsafe_allow_html=True
+     )
 
