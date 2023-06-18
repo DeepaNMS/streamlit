@@ -36,21 +36,37 @@ def load_data(url):
 
 df = load_data('Datasets/X_test_sample.csv')
 df = df.sample(n=1000)
+
+
+
+
+"""
 def st_shap(plot, height=None):
     shap_html = f"<head>{shap.getjs()}</head><body>{plot.html()}</body>"
     components.html(shap_html, height=height)
 
              
-y =df['AccidentSeverity']
-X = df.drop(['AccidentSeverity'], axis = 1)
+y_test =df['AccidentSeverity']
+X_test = df.drop(['AccidentSeverity'], axis = 1)
 
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.25)
 model = xgboost.train({"learning_rate": 0.01}, xgboost.DMatrix(X, label=y), 100)
     
 explainer = shap.TreeExplainer(model)
 shap_values = explainer.shap_values(X)
-
+"""
+y_test =df['AccidentSeverity']
+X_test = df.drop(['AccidentSeverity'], axis = 1)
+xgb_imp = xgb.XGBClassifier()
+model = xgb_imp.load_model('Models/xgb_model_improved.json')
+shap.initjs()
+explainer = TreeExplainer(xgb_imp) # XGBoost Classifier Improved
+# Compute shap values
+shap_values = explainer.shap_values(X_test[0:100])
 st.markdown(f'<p align="justify" font-family: "Times New Roman" style="color:#000000;"><br><b>{"Visualize the first prediction explanation"}</p>', unsafe_allow_html=True)
-st_shap(shap.force_plot(explainer.expected_value, shap_values[0,:], X.iloc[0,:]))
+# Initialize shap
+shap.initjs()
+shap.force_plot(explainer.expected_value, shap_values[0], features=X_test.iloc[0], feature_names=X_test.columns)
+#st_shap(shap.force_plot(explainer.expected_value, shap_values[0,:], X.iloc[0,:]))
 st.markdown(f'<p align="justify" font-family: "Times New Roman" style="color:#000000;"><br><b>{"Visualize the test set predictions"}</p>', unsafe_allow_html=True)
-st_shap(shap.force_plot(explainer.expected_value, shap_values, X), 400)
+#st_shap(shap.force_plot(explainer.expected_value, shap_values, X), 400)
