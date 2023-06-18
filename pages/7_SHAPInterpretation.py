@@ -1,7 +1,7 @@
 import shap
 import streamlit as st
 import streamlit.components.v1 as components
-import xgboost
+import xgboost as xgb
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
@@ -50,7 +50,7 @@ y_test =df['AccidentSeverity']
 X_test = df.drop(['AccidentSeverity'], axis = 1)
 
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.25)
-model = xgboost.train({"learning_rate": 0.01}, xgboost.DMatrix(X, label=y), 100)
+model = xgb.train({"learning_rate": 0.01}, xgboost.DMatrix(X, label=y), 100)
     
 explainer = shap.TreeExplainer(model)
 shap_values = explainer.shap_values(X)
