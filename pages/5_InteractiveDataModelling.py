@@ -10,14 +10,6 @@ from xgboost import XGBClassifier
 from sklearn.metrics import accuracy_score
 from sklearn.ensemble import GradientBoostingClassifier
 
-def results(model):
-    st.markdown('## Accuracy')
-    st.write(model.score(X_test, y_test))
-    st.markdown('## Confusion Matrix')
-    st.dataframe(confusion_matrix(y_test, model.predict(X_test)))
-    st.markdown('## Classification Report')
-    st.text(classification_report(y_test, model.predict(X_test)))
-
 def results1(model):
     st.markdown('## Accuracy')
     y_pred = model.predict(X_test)
@@ -26,13 +18,6 @@ def results1(model):
     st.dataframe(confusion_matrix(y_test, y_pred))
     st.markdown('## Classification Report')
     st.text(classification_report(y_test, y_pred))
-
-def splitDataset(df):
-   y_test =df['severity']
-   X_test = df.drop(['severity'], axis = 1)
-   return y_test,X_test
-   
-
 
 st.markdown('# Interactive Data Modelling:')
 # To set the background image of the page
@@ -64,9 +49,6 @@ def load_data(url):
 
 df = load_data('Datasets/X_test.csv')
 df1 = load_data('Datasets/y_test.csv')
-
-st.write(df.columns)
-st.write(df1.columns)
 
 if df is not None:
     y_test =df1['AccidentSeverity']
