@@ -246,7 +246,7 @@ if st.button('Predict Accident Severity'):
         st.write('Class 0 - Not Injured/Slightly injured')
     elif prediction == 1:
         st.write('Class 1 - Heavily Injured/Died')
-    prob = model.predict_proba(X)
+    prob = xgb_cl.predict_proba(X)
     st.write(prob)
    
 # To set the background image of the page
