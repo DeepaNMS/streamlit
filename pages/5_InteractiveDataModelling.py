@@ -66,10 +66,10 @@ if option=='XGBOOST':
    tstScore = accuracy_score(y_test,y_pred) * 100
    st.write('XGBOOST accuracy score for test dataset =',tstScore,'%')
 
-    confusion_matrix = metrics.confusion_matrix(actual, predicted)
-    cm_display = metrics.ConfusionMatrixDisplay(confusion_matrix = confusion_matrix, display_labels = [False, True])
-    cm_display.plot()
-    plt.show()
+   confusion_matrix = metrics.confusion_matrix(y_test, y_pred)
+   cm_display = metrics.ConfusionMatrixDisplay(confusion_matrix = confusion_matrix, display_labels = [False, True])
+   cm_display.plot()
+   plt.show()
 
 if option=='XGBOOST Improved':
    st.write('XGBOOST score train 72.052')
