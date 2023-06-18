@@ -59,7 +59,7 @@ y_test =df['AccidentSeverity']
 X_test = df.drop(['AccidentSeverity'], axis = 1)
 xgb_imp = xgb.XGBClassifier()
 model = xgb_imp.load_model('Models/xgb_model_improved.json')
-shap.initjs()
+
 explainer = TreeExplainer(xgb_imp) # XGBoost Classifier Improved
 # Compute shap values
 shap_values = explainer.shap_values(X_test[0:100])
