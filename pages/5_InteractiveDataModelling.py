@@ -17,7 +17,8 @@ from sklearn import metrics
 def results1(model):
     st.markdown('## Accuracy')
     y_pred = model.predict(X_test)
-    st.write(accuracy_score(y_test,y_pred))
+    res = (accuracy_score(y_test,y_pred)) * 100
+    st.write('Accuracy score for test dataset =', res, '%')   
     st.markdown('## Confusion Matrix')
     st.dataframe(confusion_matrix(y_test, y_pred))
     st.markdown('## Classification Report')
@@ -59,19 +60,12 @@ if df is not None:
     X_test = df
 
 if option=='XGBOOST':
-   st.write('XGBOOST accuracy score for training dataset = 71.998%')
+   st.write('Accuracy score for training dataset = 71.998%')
    xgb = xgb.XGBClassifier()
-   model=xgb.load_model('Models/xgb_model.json')
-   y_pred = model.predict(X_test)
-   tstScore = accuracy_score(y_test,y_pred) * 100
-   st.write('XGBOOST accuracy score for test dataset =',tstScore,'%')
-
-   confusion_matrix = metrics.confusion_matrix(y_test, y_pred)
-   cm_display = metrics.ConfusionMatrixDisplay(confusion_matrix = confusion_matrix, display_labels = [False, True])
-   cm_display.plot()
-   plt.show()
-
-if option=='XGBOOST Improved':
+   xgb.load_model('Models/xgb_model.json')
+   results1(xgb)
+    
+elif option=='XGBOOST Improved':
    st.write('XGBOOST score train 72.052')
    xgb_imp = xgb.XGBClassifier()
    xgb_imp.load_model('Models/xgb_model_improved.json')
