@@ -48,7 +48,7 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.25)
 
 st.markdown(f'<p align="justify" font-family: "Times New Roman" style="color:#000000;"><br>{"XGBoost Model"}</p><br>', unsafe_allow_html=True)
 model = xgboost.train({"learning_rate": 0.01}, xgboost.DMatrix(X, label=y), 100)
-st.markdown(f'<p align="justify" font-family: "Times New Roman" style="color:#000000;"><br>{"Explain the model's predictions using SHAP"}</p><br>', unsafe_allow_html=True)
+st.markdown(f'<p align="justify" font-family: "Times New Roman" style="color:#000000;"><br>{"Explain the model predictions using SHAP"}</p><br>', unsafe_allow_html=True)
     
 explainer = shap.TreeExplainer(model)
 shap_values = explainer.shap_values(X)
