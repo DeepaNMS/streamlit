@@ -62,7 +62,7 @@ def load_data(url):
     df = pd.read_csv(url)
     return df
 
-df = load_data('Datasets/X_test1.csv')
+df = load_data('Datasets/X_test.csv')
 df1 = load_data('Datasets/y_test.csv')
 
 st.write(df.columns)
