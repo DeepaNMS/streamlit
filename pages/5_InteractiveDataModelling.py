@@ -10,6 +10,7 @@ from xgboost import XGBClassifier
 from sklearn.metrics import accuracy_score
 from sklearn.ensemble import GradientBoostingClassifier
 import matplotlib.pyplot as plt
+import seaborn as sns
 import numpy
 from sklearn import metrics
 
@@ -19,7 +20,14 @@ def results1(model):
     res = (accuracy_score(y_test,y_pred)) * 100
     st.write('Accuracy score for test dataset =', res, '%')   
     st.markdown('## Confusion Matrix')
-    st.dataframe(confusion_matrix(y_test, y_pred))
+    ax= plt.subplot()
+    sns.heatmap(cm, annot=True, fmt='g', ax=ax);  #annot=True to annotate cells, ftm='g' to disable scientific notation
+    # labels, title and ticks
+    ax.set_xlabel('Predicted labels');ax.set_ylabel('True labels'); 
+    ax.set_title('Confusion Matrix'); 
+    ax.xaxis.set_ticklabels(['Class 0', 'Class 1']); ax.yaxis.set_ticklabels(['Class 0', 'Class 1']);
+
+    #st.dataframe(confusion_matrix(y_test, y_pred))
     st.markdown('## Classification Report')
     st.text(classification_report(y_test, y_pred))
 
