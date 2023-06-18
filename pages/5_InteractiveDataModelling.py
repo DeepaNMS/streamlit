@@ -9,6 +9,10 @@ import xgboost as xgb
 from xgboost import XGBClassifier
 from sklearn.metrics import accuracy_score
 from sklearn.ensemble import GradientBoostingClassifier
+import matplotlib.pyplot as plt
+import numpy
+from sklearn import metrics
+
 
 def results1(model):
     st.markdown('## Accuracy')
@@ -34,10 +38,10 @@ st.markdown(
          unsafe_allow_html=True
      )
 
-st.write("""Generally speaking we can consider that accuracy scores:
-                          - Over 90% - Very Good
-                    - Between 70% and 90% - Good
-                    - Between 60% and 70% - OK""")
+st.markdown(f'<p align="justify" font-family: "Times New Roman" style="color:#000000;"><br>{"Generally speaking we can consider that accuracy scores:"}</p><br>', unsafe_allow_html=True)
+st.markdown(f'<p align="justify" font-family: "Times New Roman" style="color:#000000;"><br>{"Over 90% - Very good"}</p><br>', unsafe_allow_html=True)
+st.markdown(f'<p align="justify" font-family: "Times New Roman" style="color:#000000;"><br>{"Between 70% and 90% - Good"}</p><br>', unsafe_allow_html=True)
+st.markdown(f'<p align="justify" font-family: "Times New Roman" style="color:#000000;"><br>{"Between 60% and 70% - OK"}</p><br>', unsafe_allow_html=True)
 
 choices = ['XGBOOST','XGBOOST Improved']
 option = st.selectbox('Which model do you want to try ?', choices)
@@ -55,11 +59,17 @@ if df is not None:
     X_test = df
 
 if option=='XGBOOST':
-   st.write('XGBOOST score train 71.998')
+   st.write('XGBOOST accuracy score for training dataset = 71.998%')
    xgb = xgb.XGBClassifier()
    xgb.load_model('Models/xgb_model.json')
-   results1(xgb)
+   y_pred = model.predict(X_test)
+   tstScore = accuracy_score(y_test,y_pred) * 100
+   st.write('XGBOOST accuracy score for test dataset =',tstScore,'%')
 
+    confusion_matrix = metrics.confusion_matrix(actual, predicted)
+    cm_display = metrics.ConfusionMatrixDisplay(confusion_matrix = confusion_matrix, display_labels = [False, True])
+    cm_display.plot()
+    plt.show()
 
 if option=='XGBOOST Improved':
    st.write('XGBOOST score train 72.052')
