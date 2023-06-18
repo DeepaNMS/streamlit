@@ -15,7 +15,6 @@ from sklearn import metrics
 
 
 def results1(model):
-    st.markdown('## Accuracy')
     y_pred = model.predict(X_test)
     res = (accuracy_score(y_test,y_pred)) * 100
     st.write('Accuracy score for test dataset =', res, '%')   
@@ -60,6 +59,7 @@ if df is not None:
     X_test = df
 
 if option=='XGBOOST':
+   st.markdown('## Accuracy')
    st.write('Accuracy score for training dataset = 71.998%')
    xgb = xgb.XGBClassifier()
    xgb.load_model('Models/xgb_model.json')
