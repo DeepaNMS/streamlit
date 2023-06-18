@@ -78,9 +78,9 @@ st.markdown(
      )
 # List down all features used for modelling
 st.markdown(f'<p align="justify" font-family: "Times New Roman" style="color:#000000;"><br><b>{"Accident features used in data modelling!"}</p><br>', unsafe_allow_html=True)
-st.markdown(f'<p align="justify" font-family: "Times New Roman" style="color:#000000;"><br>{"1. Area Zone "}</p><br>', unsafe_allow_html=True)
-st.markdown(f'<p align="justify" font-family: "Times New Roman" style="color:#000000;"><br>{"2. Collision Type"}</p><br>', unsafe_allow_html=True)
-st.markdown(f'<p align="justify" font-family: "Times New Roman" style="color:#000000;"><br>{"3. Municipality "}</p><br>', unsafe_allow_html=True)
+st.markdown(f'<p align="justify" font-family: "Times New Roman" style="color:#000000;">{"1. Area Zone "}</p><br>', unsafe_allow_html=True)
+st.markdown(f'<p align="justify" font-family: "Times New Roman" style="color:#000000;">{"2. Collision Type"}</p><br>', unsafe_allow_html=True)
+st.markdown(f'<p align="justify" font-family: "Times New Roman" style="color:#000000;">{"3. Municipality "}</p><br>', unsafe_allow_html=True)
 st.markdown(f'<p align="justify" font-family: "Times New Roman" style="color:#000000;"><br>{"4. Road Category "}</p><br>', unsafe_allow_html=True)
 st.markdown(f'<p align="justify" font-family: "Times New Roman" style="color:#000000;"><br>{"5. Traffic Regime "}</p><br>', unsafe_allow_html=True)
 st.markdown(f'<p align="justify" font-family: "Times New Roman" style="color:#000000;"><br>{"6. Nr Of Traffic Lanes "}</p><br>', unsafe_allow_html=True)
