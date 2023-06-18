@@ -27,7 +27,7 @@ def load_data(url):
     df = pd.read_csv(url)
     return df
 
-df = load_data('X_test_sample.csv')
+df = load_data('Datasets/X_test_sample.csv')
 df = df.sample(n=1000)
 def st_shap(plot, height=None):
     shap_html = f"<head>{shap.getjs()}</head><body>{plot.html()}</body>"
