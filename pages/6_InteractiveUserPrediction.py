@@ -240,12 +240,14 @@ xgb_cl.load_model('Models/xgb_model.json')
 
 
 if st.button('Predict Accident Severity'):
-    prediction = xgb_cl.predict(pd.DataFrame([[areaZone, collisionType, municipality, roadCategory, trafficRegime, nrOfTrafficLanes, accidentSituation, struckWithFixedObject, struckWithMovingObject, initialShockPoint, intersectionType ]], columns=[areaZone, collisionType, municipality, roadCategory, trafficRegime, nrOfTrafficLanes, accidentSituation, struckWithFixedObject, struckWithMovingObject, initialShockPoint, intersectionType]))
+    X = pd.DataFrame([[areaZone, collisionType, municipality, roadCategory, trafficRegime, nrOfTrafficLanes, accidentSituation, struckWithFixedObject, struckWithMovingObject, initialShockPoint, intersectionType ]], columns=[areaZone, collisionType, municipality, roadCategory, trafficRegime, nrOfTrafficLanes, accidentSituation, struckWithFixedObject, struckWithMovingObject, initialShockPoint, intersectionType]) 
+    prediction = xgb_cl.predict(X)
     if prediction == 0:
         st.write('Class 0 - Not Injured/Slightly injured')
     elif prediction == 1:
         st.write('Class 1 - Heavily Injured/Died')
-
+    prob = model.predict_proba(X)
+    st.write(prob)
    
 # To set the background image of the page
 st.markdown(
