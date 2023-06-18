@@ -15,7 +15,7 @@ st.set_page_config(
     layout='wide'
 )
 
-st.markdown(f'<b><h0 style="color:#00008B;font-size:35px;">{"Model interpretation with SHAP:"}</h0><br>', unsafe_allow_html=True)
+st.markdown(f'<b><h0 style="color:#00008B;font-size:35px;">{"Model interpretation with SHAP"}</h0><br>', unsafe_allow_html=True)
 
 # To set the background image of the page
 st.markdown(
@@ -40,18 +40,14 @@ df = load_data('Datasets/X_test_sample.csv')
 df = df.sample(n=1000)
 
 
-y_test =df['AccidentSeverity']
-X_test = df.drop(['AccidentSeverity'], axis = 1)
+y =df['AccidentSeverity']
+X = df.drop(['AccidentSeverity'], axis = 1)
 xgb_imp = xgb.XGBClassifier()
 model = xgb_imp.load_model('Models/xgb_model_improved.json')
 
-explainer = TreeExplainer(xgb_imp) # XGBoost Classifier Improved
-# Compute shap values
-shap_values = explainer.shap_values(X_test[0:100])
-st.markdown(f'<p align="justify" font-family: "Times New Roman" style="color:#000000;"><br><b>{"Visualize the first prediction explanation"}</p>', unsafe_allow_html=True)
-# Initialize shap
-shap.initjs()
-shap.force_plot(explainer.expected_value, shap_values[0], features=X_test.iloc[0], feature_names=X_test.columns)
-#st_shap(shap.force_plot(explainer.expected_value, shap_values[0,:], X.iloc[0,:]))
-#st.markdown(f'<p align="justify" font-family: "Times New Roman" style="color:#000000;"><br><b>{"Visualize the test set predictions"}</p>', unsafe_allow_html=True)
-#st_shap(shap.force_plot(explainer.expected_value, shap_values, X), 400)
+explainer = shap.TreeExplainer(model)
+shap_values = explainer.shap_values(X)
+st.markdown(f'<p align="justify" font-family: "Times New Roman" style="color:#000000;"><b>{"#Visualize the first prediction explanation"}</p>', unsafe_allow_html=True)
+st_shap(shap.force_plot(explainer.expected_value, shap_values[0,:], X.iloc[0,:]))
+st.markdown(f'<p align="justify" font-family: "Times New Roman" style="color:#000000;"><b>{"#Visualize the test set predictions"}</p>', unsafe_allow_html=True)
+st_shap(shap.force_plot(explainer.expected_value, shap_values, X), 400)
