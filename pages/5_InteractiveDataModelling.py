@@ -64,6 +64,10 @@ def load_data(url):
 
 df = load_data('Datasets/X_test1.csv')
 df1 = load_data('Datasets/y_test.csv')
+
+st.write(df.columns)
+st.write(df1.columns)
+
 if df is not None:
     y_test =df1['AccidentSeverity']
     X_test = df
