@@ -65,21 +65,8 @@ def load_data(url):
 df = load_data('Datasets/X_test.csv')
 df1 = load_data('Datasets/y_test.csv')
 if df is not None:
-    y_test =df1['severity']
-    X_test = df.drop(['severity','Unnamed: 0'], axis = 1)
-
-if option=='Gradient Boosting':
-   st.write('Gradient Boosting score train 69.96')
-   GBC = GradientBoostingClassifier()
-   GBC=load_model('Models/gbcwohyperparms.dat')
-   results(GBC)
-
-if option=='Gradient Boosting Improved':
-   st.write('Gradient Boosting score train 71.894')
-   GBCi = GradientBoostingClassifier()
-   GBCi=load_model('Models/gbc.dat')
-   results(GBCi)
-
+    y_test =df1['AccidentSeverity']
+    X_test = df
 
 if option=='XGBOOST':
    st.write('XGBOOST score train 71.998')
