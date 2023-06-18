@@ -6,8 +6,7 @@ import pydeck as pdk
 import plotly.express as px
 import datetime as dt
 
-st.header('Interactive Accident Data Analysis:')
-
+st.markdown(f'<b><h0 style="color:#00008B;font-size:35px;">{"Interactive Accident Data Analysis:"}</h0><br>', unsafe_allow_html=True)
 st.image("https://www.simplilearn.com/ice9/free_resources_article_thumb/Data_Visualization_Tools.jpg", width=900)
             
 @st.cache_data
@@ -22,12 +21,12 @@ df['date/time'] = pd.to_datetime(df['CRASH_DATE'] + ' ' + df['CRASH_TIME'])
 data = df
 
 #1. Visualization
-st.header("Where are the most people injured in France?")
+st.markdown(f'<b><h0 style="color:#00008B;font-size:35px;">{"Where are the most people injured in France?"}</h0><br>', unsafe_allow_html=True)
 injured_people = st.slider("Number of person injured in road accident",0, 100)
 st.map(data.query("INJURED_PERSONS >= @injured_people")[['LATITUDE', 'LONGITUDE']].dropna(how="any"))
 
 #2. Visualization ######################
-st.header("How many road accident during a given time of the day?")
+st.markdown(f'<b><h0 style="color:#00008B;font-size:35px;">{"How many road accident during a given time of the day?"}</h0><br>', unsafe_allow_html=True)
 hour = st.slider("Hour to look at", 0, 23)
 severity = st.radio("Severity",('Not Severe', 'Severe', 'All'))
 if severity=='Not Severe':
@@ -35,7 +34,7 @@ if severity=='Not Severe':
 if severity=='Severe':
      severity=1
 
-st.markdown("road accident between %i:00 and %i:00" % (hour, (hour + 1) % 24))
+st.markdown("Road accidents between %i:00 and %i:00" % (hour, (hour + 1) % 24))
 
 chart_data = df[['LATITUDE','LONGITUDE','date/time','severity']].dropna(how="any")
 chart_data=chart_data.rename(columns={"LATITUDE": "lat", "LONGITUDE": "lon"})
@@ -77,8 +76,8 @@ fig = px.bar(chart_data, x='minute',y='crashes', hover_data=['minute','crashes']
 st.write(fig)
 
 #5. Visualization
-st.header("Top 8 dangerous area by zone")
-#select = st.selectbox('Injured people', ['Pedestrian','Cyclists','Motorists'])
+st.markdown("Road accidents between %i:00 and %i:00" % (hour, (hour + 1) % 24))
+st.markdown(f'<b><h0 style="color:#00008B;font-size:35px;">{"Top 8 dangerous area by zone"}</h0><br>', unsafe_allow_html=True)
 select = st.selectbox('Injured people', ['Department','Commune','Street'])
 
 if select == 'Department':
