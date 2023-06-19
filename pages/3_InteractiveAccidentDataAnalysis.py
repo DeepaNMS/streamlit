@@ -15,7 +15,7 @@ def load_data(url):
     return df
 
   
-df = load_data('Dataviz_12_06_2023.csv').sample(n=12500)  
+df = load_data('Datasets/Dataviz_12_06_2023.csv').sample(n=12500)  
 df.dropna(subset=['LATITUDE', 'LONGITUDE','CRASH_DATE','CRASH_TIME'], inplace=True)
 df['date/time'] = pd.to_datetime(df['CRASH_DATE'] + ' ' + df['CRASH_TIME'])
 data = df
