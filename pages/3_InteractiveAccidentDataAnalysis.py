@@ -9,13 +9,13 @@ import datetime as dt
 st.markdown(f'<b><h0 style="color:#00008B;font-size:35px;">{"Interactive Accident Data Analysis:"}</h0><br>', unsafe_allow_html=True)
 st.image("https://www.simplilearn.com/ice9/free_resources_article_thumb/Data_Visualization_Tools.jpg", width=900)
             
-@st.cache_data
+@st.cache_resource
 def load_data(url):
     df = pd.read_csv(url)
     return df
 
   
-df = load_data('Datasets/Dataviz_12_06_2023.csv')   
+df = load_data('Dataviz_12_06_2023.csv').sample(n=12500)  
 df.dropna(subset=['LATITUDE', 'LONGITUDE','CRASH_DATE','CRASH_TIME'], inplace=True)
 df['date/time'] = pd.to_datetime(df['CRASH_DATE'] + ' ' + df['CRASH_TIME'])
 data = df
