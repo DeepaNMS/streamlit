@@ -48,6 +48,6 @@ explainer = shap.TreeExplainer(model)
 shap_values = explainer.shap_values(X)
 
 st.markdown(f'<p align="justify" font-family: "Times New Roman" style="color:#000000;"><b>{"Visualize the first prediction explanation:"}</b></p>', unsafe_allow_html=True)
-st_shap(shap.force_plot(explainer.expected_value, shap_values[2,:], X.iloc[2,:]))
+st_shap(shap.force_plot(explainer.expected_value, shap_values[4,:], X.iloc[4,:]))
 st.markdown(f'<p align="justify" font-family: "Times New Roman" style="color:#000000;"><b>{"Visualize the predictions:"}</b></p>', unsafe_allow_html=True)
 st_shap(shap.force_plot(explainer.expected_value, shap_values, X), 400)
