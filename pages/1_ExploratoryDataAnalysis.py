@@ -35,6 +35,6 @@ st.markdown(
 # This page deals with the exploratory data analysis 
 
 X_test_file = "Datasets/data_viz_plot_filtered.csv"
-df = pd.read_csv(X_test_file).sample(n=25000)
+df = pd.read_csv(X_test_file).sample(n=100)
 pr = df.profile_report()
 st_profile_report(pr)
