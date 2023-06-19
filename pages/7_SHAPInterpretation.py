@@ -49,8 +49,5 @@ shap_values = explainer.shap_values(X)
 
 st.markdown(f'<p align="justify" font-family: "Times New Roman" style="color:#000000;"><b>{"Visualize the first prediction explanation:"}</b></p>', unsafe_allow_html=True)
 st_shap(shap.force_plot(explainer.expected_value, shap_values[3,:], X.iloc[3,:]))
-st.write(X.iloc[3,:])
-st.write(y[3])
-st.write(shap_values[3])
 st.markdown(f'<p align="justify" font-family: "Times New Roman" style="color:#000000;"><b>{"Visualize the predictions:"}</b></p>', unsafe_allow_html=True)
 st_shap(shap.force_plot(explainer.expected_value, shap_values, X), 400)
