@@ -42,12 +42,12 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.25)
 
 model = xgboost.train({"learning_rate": 0.01}, xgboost.DMatrix(X, label=y), 100)
 
-st.markdown(f'<b><h0 style="color:#00008B;font-size:35px;">{"Model Interpretation with SHAP(SHapley Additive exPlanations)"}</h0><br>', unsafe_allow_html=True)
+st.markdown(f'<b><h0 style="color:#00008B;font-size:35px;">{"Model Interpretation with SHAP(SHapley Additive exPlanations) :"}</h0><br>', unsafe_allow_html=True)
     
 explainer = shap.TreeExplainer(model)
 shap_values = explainer.shap_values(X)
 
 st.markdown(f'<p align="justify" font-family: "Times New Roman" style="color:#000000;"><b>{"Visualize the first prediction explanation:"}</b></p>', unsafe_allow_html=True)
-st_shap(shap.force_plot(explainer.expected_value, shap_values[1,:], X.iloc[1,:]))
+st_shap(shap.force_plot(explainer.expected_value, shap_values[2,:], X.iloc[2,:]))
 st.markdown(f'<p align="justify" font-family: "Times New Roman" style="color:#000000;"><b>{"Visualize the predictions:"}</b></p>', unsafe_allow_html=True)
 st_shap(shap.force_plot(explainer.expected_value, shap_values, X), 400)
