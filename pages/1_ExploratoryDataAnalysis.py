@@ -13,7 +13,7 @@ st.set_page_config(
     layout='wide'
 )
 
-st.markdown(f'<b><h0 style="color:#00008B;font-size:35px;">{"Exploratory Data Analysis!"}</h0><br>', unsafe_allow_html=True)
+st.markdown(f'<b><h0 style="color:#00008B;font-size:35px;">{"Exploratory Data Analysis:"}</h0><br>', unsafe_allow_html=True)
 
 # To insert textual content 
 st.markdown(f'<p align="justify" font-family: "Times New Roman" style="color:#000000;"><br>{"Since the dataset is huge, the profiling has been done on the Test dataset."}</p><br>', unsafe_allow_html=True)
@@ -35,6 +35,6 @@ st.markdown(
 # This page deals with the exploratory data analysis 
 
 X_test_file = "Datasets/data_viz_plot_filtered.csv"
-df = pd.read_csv(X_test_file).sample(n=100000)
+df = pd.read_csv(X_test_file).sample(n=25000)
 pr = df.profile_report()
 st_profile_report(pr)
