@@ -16,7 +16,7 @@ st.set_page_config(
 st.markdown(f'<b><h0 style="color:#00008B;font-size:35px;">{"Exploratory Data Analysis:"}</h0><br>', unsafe_allow_html=True)
 
 # To insert textual content 
-st.markdown(f'<p align="justify" font-family: "Times New Roman" style="color:#000000;"><br>{"Since the dataset is huge, the profiling has been done on the Test dataset."}</p><br>', unsafe_allow_html=True)
+st.markdown(f'<p align="justify" font-family: "Times New Roman" style="color:#000000;"><br>{"Since the dataset is huge, the profiling has been done on the sample dataset."}</p><br>', unsafe_allow_html=True)
 
     
 # To set the background image of the page
