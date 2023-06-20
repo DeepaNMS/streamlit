@@ -28,7 +28,7 @@ def load_data(url):
     return df
 
 df = load_data('Datasets/X_test_sample.csv')
-df = df.sample(n=1000)
+df = df.sample(n=500)
 def st_shap(plot, height=None):
     shap_html = f"<head>{shap.getjs()}</head><body>{plot.html()}</body>"
     components.html(shap_html, height=height)
